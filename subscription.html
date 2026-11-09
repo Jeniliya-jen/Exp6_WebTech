@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Classics | Editorial Subscription</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  min-height:100vh;
+  font-family:Georgia,"Times New Roman",serif;
+  background-image:linear-gradient(rgba(20,12,6,0.75),rgba(20,12,6,0.75)),url("formbg.png");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+}
+.formbox {
+  width:700px;
+  max-width:100%;
+  background:#241408;
+  border:2px solid #a9823f;
+  border-radius:18px;
+  padding:40px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+  backdrop-filter:blur(5px);
+}
+.header { text-align:center; margin-bottom:25px; }
+.header h1 { color:#f0e6d8; font-size:42px; letter-spacing:3px; margin-bottom:8px; }
+.header h2 { color:#d9b46a; font-size:22px; font-weight:normal; letter-spacing:1px; }
+.line { width:100px; height:2px; background:#a9823f; margin:15px auto; }
+.description { color:#e6d5c8; text-align:center; line-height:1.7; font-size:15px; margin-bottom:30px; }
+.section { border:1px solid #6b4a2c; border-radius:12px; padding:22px; margin-bottom:20px; background:#2f1c0d; }
+.section-title { color:#d9b46a; font-weight:bold; font-size:17px; margin-bottom:18px; letter-spacing:0.5px; }
+.form-row { display:flex; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+.form-row:last-child { margin-bottom:0; }
+.form-row label { width:180px; color:#f0e6d8; font-weight:bold; }
+.form-row input, .form-row select { flex:1; }
+input, select {
+  padding:11px 13px;
+  border:1px solid #6b4a2c;
+  border-radius:7px;
+  background:#3a2414;
+  color:#f6efe0;
+  font-family:Georgia,"Times New Roman",serif;
+  outline:none;
+  transition:0.3s;
+}
+input:focus, select:focus { border-color:#d9b46a; box-shadow:0 0 0 3px rgba(217,180,106,0.2); }
+input::placeholder { color:#b89a7c; }
+.choice { display:block; padding:10px 12px; margin-bottom:8px; border-radius:7px; color:#e6d5c8; cursor:pointer; transition:0.25s; }
+.choice:hover { background:rgba(217,180,106,0.12); }
+.choice input { margin-right:10px; accent-color:#d9b46a; }
+.normal-label { display:block; color:#f0e6d8; font-weight:bold; margin-bottom:8px; }
+.full-input { width:100%; }
+
+/* validation messages */
+.msg { display:block; font-size:13px; }
+.msg:empty { display:none; }
+.form-row .msg { flex-basis:100%; margin:6px 0 0 180px; }
+.section .msg { margin-top:6px; }
+.msg.error { color:#ff8f8f; }
+.msg.ok { color:#8fd19e; }
+
+.submit-area { text-align:center; margin-top:28px; }
+.submit-btn {
+  background:linear-gradient(135deg,#6b4226,#a9823f);
+  color:#f6efe0;
+  border:none;
+  border-radius:30px;
+  padding:14px 45px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:16px;
+  letter-spacing:1px;
+  cursor:pointer;
+  box-shadow:0 6px 15px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+.submit-btn:hover { transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,0.5); background:linear-gradient(135deg,#8b5a2b,#d9b46a); }
+.home-link { display:block; text-align:center; margin-top:25px; color:#d9b46a; text-decoration:none; font-weight:bold; transition:0.3s; }
+.home-link:hover { color:#f0e6d8; text-decoration:underline; }
+@media screen and (max-width:700px) {
+  body { padding:20px 10px; background-attachment:scroll; }
+  .formbox { padding:25px 18px; }
+  .header h1 { font-size:32px; }
+  .header h2 { font-size:19px; }
+  .form-row { display:block; }
+  .form-row label { display:block; width:100%; margin-bottom:7px; }
+  .form-row input, .form-row select { width:100%; }
+  .form-row .msg { margin-left:0; }
+  .section { padding:17px; }
+}
+</style>
+</head>
+<body>
+<div class="formbox">
+<div class="header">
+<h1>Royal Classics</h1>
+<div class="line"></div>
+<h2>Editorial Subscription</h2>
+</div>
+<p class="description">Subscribe to receive exclusive fashion editorials, seasonal style guides, luxury trend forecasts, premium digital editions, and Royal Classics updates.</p>
+<form id="signupForm" action="#" method="post" novalidate>
+<div class="section">
+<div class="section-title">Personal Details</div>
+<div class="form-row">
+<label for="fullname">Full Name</label>
+<input type="text" id="fullname" name="fullname" placeholder="Enter your full name">
+<span id="nameError" class="msg"></span>
+</div>
+<div class="form-row">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="Enter your email">
+<span id="emailError" class="msg"></span>
+</div>
+<div class="form-row">
+<label for="password">Create Password</label>
+<input type="password" id="password" name="password" placeholder="Create a password">
+<span id="passError" class="msg"></span>
+</div>
+<div class="form-row">
+<label for="age">Age</label>
+<input type="number" id="age" name="age" min="16" max="100" placeholder="16 - 100">
+<span id="ageError" class="msg"></span>
+</div>
+<div class="form-row">
+<label for="birthdate">Date of Birth</label>
+<input type="date" id="birthdate" name="birthdate">
+<span id="dobError" class="msg"></span>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Preferred Fashion Style</div>
+<label class="choice"><input type="radio" name="style" value="Classic"> Classic Elegance</label>
+<label class="choice"><input type="radio" name="style" value="Modern"> Modern Luxury</label>
+<label class="choice"><input type="radio" name="style" value="Vintage"> Vintage Heritage</label>
+<span id="styleError" class="msg"></span>
+</div>
+<div class="section">
+<div class="section-title">Content You Wish to Receive</div>
+<label class="choice"><input type="checkbox" name="content" value="Editorials"> Seasonal Editorials</label>
+<label class="choice"><input type="checkbox" name="content" value="Collections"> Collection Launches</label>
+<label class="choice"><input type="checkbox" name="content" value="StyleGuides"> Style Guides</label>
+<label class="choice"><input type="checkbox" name="content" value="Newsletters"> Monthly Newsletter</label>
+<span id="contentError" class="msg"></span>
+</div>
+<div class="section">
+<label class="normal-label">Preferred Digital Edition</label>
+<select name="edition" class="full-input">
+<option>Spring Edition</option>
+<option>Summer Edition</option>
+<option>Autumn Edition</option>
+<option>Winter Edition</option>
+</select>
+</div>
+<div class="section">
+<label class="normal-label">City</label>
+<input list="cities" name="city" class="full-input" placeholder="Select or enter your city">
+<datalist id="cities">
+<option value="Chennai">
+<option value="Coimbatore">
+<option value="Bengaluru">
+</datalist>
+</div>
+<div class="submit-area">
+<input type="submit" value="Subscribe to Royal Classics" class="submit-btn">
+</div>
+</form>
+<a href="index.html" class="home-link">← Back to Home</a>
+</div>
+<script src="validate.js"></script>
+</body>
+</html>

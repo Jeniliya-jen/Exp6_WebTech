@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Classics</title>
+<style>
+.collection-card {
+  border-radius: 30px;
+}
+#featured-frame {
+  border: 15px solid transparent;
+  border-image: linear-gradient(45deg, #a9823f, #3b2412, #a9823f) 30;
+  border-image-slice: 30;
+  border-image-repeat: round;
+}
+#site-header {
+  background-image: linear-gradient(rgba(59,36,18,0.85), rgba(59,36,18,0.85)),
+                     url('ROYALCLASSICS.png');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+}
+#site-header {
+  background-size: auto, cover;
+}
+#subscribeEmail {
+  padding: 8px;
+  border: 2px solid #a9823f;
+  font-family: Georgia, serif;
+}
+#subscribeEmail:focus {
+  border: 2px solid #3b2412;
+  background-color: #fff8ec;
+  outline: none;
+}
+#subscribeEmail:required {
+  border-color: #3b2412;
+}
+#subscribeEmail:valid {
+  border-color: green;
+}
+#subscribeEmail:invalid {
+  border-color: #b23b3b;
+}
+.collection-card:hover + .collection-card {
+  box-shadow: -8px 0 15px rgba(169,130,63,0.5);
+}
+#overviewTable tr:not(:first-child):nth-child(odd) {
+  background-color: #fbf7ef;
+}
+#overviewTable tr:not(:first-child):nth-child(even) {
+  background-color: #f0e6d6;
+}
+table[bgcolor="#3b2412"] {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+font[size="6"], font[size="7"] {
+  letter-spacing: 1px;
+}
+#site-header a font {
+  transition: color 0.25s ease;
+}
+#site-header a:hover font {
+  color: #d9b46a !important;
+}
+.collection-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(59,36,18,0.35);
+}
+#featured-frame {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+#overviewTable tr:hover {
+  background-color: #e9dcc8 !important;
+}
+.form-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #d9b46a;
+  text-decoration: underline;
+}
+.form-link:hover {
+  color: #ffffff;
+}
+.marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: #3b2412;
+  padding: 24px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+.marquee-track img {
+  height: 180px;
+  margin: 0 12px;
+  border-radius: 10px;
+  border: 2px solid #a9823f;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.dict-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 22px;
+  text-align: left;
+  margin-top: 10px;
+}
+.dict-item {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid #a9823f;
+  padding: 16px 20px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.dict-item:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateX(6px);
+}
+.dict-term {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  color: #f6efe0;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+}
+.dict-term::first-letter {
+  font-size: 32px;
+  color: #a9823f;
+  font-weight: bold;
+  margin-right: 2px;
+}
+.dict-def {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #e6d5c8;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+}
+.card-tip {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: #6b4423;
+  font-style: italic;
+  margin: 10px 0;
+  padding: 0 6px;
+}
+.card-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+.card-price {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: #3b2412;
+  font-weight: bold;
+}
+.shop-btn {
+  display: inline-block;
+  background: #3b2412;
+  color: #f7f1e8 !important;
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.shop-btn:hover {
+  background: #a9823f;
+  transform: translateY(-2px);
+}
+.cta-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 50%;
+  margin: 22px auto;
+  color: #e6d5c8;
+  font-family: Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+.cta-divider::before, .cta-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+}
+.cta-link {
+  display: inline-block;
+  padding: 10px 30px;
+  border: 2px solid #a9823f;
+  border-radius: 30px;
+  color: #f6efe0 !important;
+  font-family: Georgia, serif;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.cta-link:hover {
+  background: #a9823f;
+  color: #3b2412 !important;
+}
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.contact-item {
+  font-family: Georgia, serif;
+  text-align: center;
+}
+.contact-icon {
+  display: block;
+  font-size: 22px;
+  color: #a9823f;
+  margin-bottom: 8px;
+}
+.contact-item a {
+  color: #f6efe0;
+  text-decoration: none;
+  border-bottom: 1px dotted #a9823f;
+  padding-bottom: 2px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.contact-item a:hover {
+  color: #d9b46a;
+  border-color: #d9b46a;
+}
+table[bgcolor="#3b2412"]:not(#site-header),
+.marquee-wrap {
+  background-image: url("bg_pattern.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.planner-form { margin: 14px 0; }
+#taskInput { padding: 8px; border: 2px solid #a9823f; border-radius: 6px; font-family: Georgia, serif; width: 260px; max-width: 70%; }
+#taskInput:focus { outline: none; border-color: #d9b46a; background-color: #fff8ec; }
+.planner-add { background: #a9823f; color: #3b2412; border: none; border-radius: 20px; padding: 9px 20px; font-family: Georgia, serif; cursor: pointer; }
+.planner-add:hover { background: #d9b46a; }
+.filter-bar { margin: 10px 0; }
+.filter-btn { background: transparent; color: #f6efe0; border: 1px solid #a9823f; border-radius: 20px; padding: 5px 16px; margin: 0 3px; font-family: Georgia, serif; cursor: pointer; }
+.filter-btn.active, .filter-btn:hover { background: #a9823f; color: #3b2412; }
+#taskList { list-style: none; width: 70%; margin: 14px auto; padding: 0; text-align: left; }
+.task-item { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.08); border-left: 3px solid #a9823f; padding: 10px 14px; margin-bottom: 8px; font-family: Georgia, serif; color: #f6efe0; }
+.task-item.done .task-text { text-decoration: line-through; opacity: 0.6; }
+.task-text { flex: 1; }
+.task-del { background: transparent; color: #e6b3b3; border: 1px solid #b23b3b; border-radius: 14px; padding: 3px 12px; font-family: Georgia, serif; cursor: pointer; }
+.task-del:hover { background: #b23b3b; color: #ffffff; }
+#counter { font-family: Georgia, serif; color: #e6d5c8; font-style: italic; }
+.msg { display:block; font-size:13px; margin-top:6px; font-family:Georgia,serif; }
+.msg.error { color:#ff8f8f; }
+.msg.ok { color:#8fd19e; }
+</style>
+</head>
+<body style="background-image: url('full_bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+<center>
+<table id="site-header" width="100%" bgcolor="#3b2412" cellpadding="20" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="7" color="#f7f1e8"><b>ROYAL CLASSICS</b></font>
+<br>
+<font face="Georgia, serif" size="4" color="#e4cfc0"><i>Timeless Fashion. Modern Grace.</i></font>
+</td>
+</tr>
+</table>
+</center>
+<center>
+<p>
+<font face="Georgia, serif" size="3" color="#6b4423"><b>Royal Classics is an online fashion magazine inspired by timeless tailoring, luxury fabrics and elegant seasonal fashion. Our collections celebrate classic coats, premium materials and refined accessories.</b></font>
+</p>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<table width="70%" border="0">
+<tr><td align="center">
+<font face="Georgia, serif" size="5" color="#3b2412">
+<i>&ldquo;It is not the palace that makes one royal, but the manner in which one carries themselves through it.&rdquo;</i>
+</font>
+<br><br>
+<font face="Arial, sans-serif" size="2" color="#a9823f">&mdash; THE ROYAL CLASSICS EDITORS</font>
+</td></tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<table width="90%" bgcolor="#3b2412" cellpadding="12" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="3">
+<a href="#collections"><font color="#ffffff">COLLECTIONS</font></a>
+&nbsp; | &nbsp;
+<a href="#table"><font color="#ffffff">COLLECTION TABLE</font></a>
+&nbsp; | &nbsp;
+<a href="#subscription"><font color="#ffffff">SUBSCRIBE</font></a>
+&nbsp; | &nbsp;
+<a href="#contact"><font color="#ffffff">CONTACT</font></a>
+&nbsp; | &nbsp;
+<a href="https://www.ralphlauren.com/" target="_blank"><font color="#ffffff">VISIT RALPH LAUREN</font></a>
+</font>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Featured Collection</b></font>
+<p>
+<table id="featured-frame" bgcolor="#ffffff" border="1" bordercolor="#a9823f" cellpadding="8">
+<tr>
+<td>
+<a href="coat.png" target="_blank">
+<img src="coat.png" width="900" alt="Royal Classics Banner" border="0">
+</a>
+</td>
+</tr>
+</table>
+</p>
+<font face="Georgia, serif" size="2" color="#ffffff"><i>Click the image to view it in full size.</i></font>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<div class="marquee-wrap">
+<div class="marquee-track">
+<img src="coat.png" alt="Classic Coats">
+<img src="fabric.png" alt="Luxury Fabrics">
+<img src="accessories.png" alt="Accessories">
+<img src="Wristwatch.png" alt="Watch">
+<img src="Hand_bag.png" alt="Bag">
+<img src="Scarf.png" alt="Scarf">
+<img src="Leather_Bag.png" alt="Leather">
+<img src="coat.png" alt="Royal Classics">
+<img src="Wristwatch.png" alt="Watch">
+<img src="Hand_bag.png" alt="Bag">
+<img src="Scarf.png" alt="Scarf">
+<img src="Leather_Bag.png" alt="Leather">
+</div>
+</div>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<a name="collections"></a>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Explore Our Collections</b></font>
+<p>
+<table width="100%" border="0" cellpadding="15" cellspacing="10">
+<tr>
+<td class="collection-card" width="33%" align="center" valign="top" bgcolor="#e4cfc0" bordercolor="#a9823f" border="1">
+<img src="coat.png" alt="Classic Coats" width="250" border="0">
+<br>
+<font face="Georgia, serif" size="4" color="#3b2412"><b>Classic Coats</b></font>
+<br>
+<font face="Georgia, serif" size="2" color="#3d3026">Elegant outerwear designed with timeless silhouettes, premium tailoring and neutral colours.</font>
+<div class="card-tip">&ldquo;Style Tip: Layer over a cashmere turtleneck for winter evenings.&rdquo;</div>
+<div class="card-price-row">
+<span class="card-price">From &#8377;8,999</span>
+<a class="shop-btn" href="shop-coats.html">Shop the Look</a>
+</div>
+</td>
+<td class="collection-card" width="33%" align="center" valign="top" bgcolor="#e4cfc0" bordercolor="#a9823f" border="1">
+<img src="fabric.png" alt="Luxury Fabrics" width="250" border="0">
+<br>
+<font face="Georgia, serif" size="4" color="#3b2412"><b>Luxury Fabrics</b></font>
+<br>
+<font face="Georgia, serif" size="2" color="#3d3026">Discover carefully selected wool, linen and cashmere chosen for comfort, warmth and elegance.</font>
+<div class="card-tip">&ldquo;As seen in our Winter '26 editorial spread.&rdquo;</div>
+<div class="card-price-row">
+<span class="card-price">From &#8377;4,499</span>
+<a class="shop-btn" href="shop-fabrics.html">Shop the Look</a>
+</div>
+</td>
+<td class="collection-card" width="33%" align="center" valign="top" bgcolor="#e4cfc0" bordercolor="#a9823f" border="1">
+<img src="accessories.png" alt="Accessories" width="250" border="0">
+<br>
+<font face="Georgia, serif" size="4" color="#3b2412"><b>Accessories</b></font>
+<br>
+<font face="Georgia, serif" size="2" color="#3d3026">Minimal handbags and scarves that complete every classic wardrobe beautifully.</font>
+<div class="card-tip">&ldquo;Style Tip: Pair the scarf with the classic coat for a monochrome look.&rdquo;</div>
+<div class="card-price-row">
+<span class="card-price">From &#8377;2,299</span>
+<a class="shop-btn" href="shop-accessories.html">Shop the Look</a>
+</div>
+</td>
+</tr>
+</table>
+</p>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<a name="table"></a>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Collection Overview</b></font>
+<p>
+<table id="overviewTable" width="100%" border="1" bordercolor="#a9823f" cellpadding="10" cellspacing="0" bgcolor="#ffffff">
+<tr bgcolor="#3b2412">
+<th><font color="#f6efe0" face="Georgia, serif">Collection</font></th>
+<th><font color="#f6efe0" face="Georgia, serif">Season</font></th>
+<th><font color="#f6efe0" face="Georgia, serif">Material</font></th>
+<th><font color="#f6efe0" face="Georgia, serif">Style</font></th>
+</tr>
+<tr>
+<td align="center"><font face="Georgia, serif">Classic Coats</font></td>
+<td align="center"><font face="Georgia, serif">Winter</font></td>
+<td align="center"><font face="Georgia, serif">Wool Blend</font></td>
+<td align="center"><font face="Georgia, serif">Vintage</font></td>
+</tr>
+<tr bgcolor="#fbf7ef">
+<td align="center"><font face="Georgia, serif">Luxury Fabrics</font></td>
+<td align="center"><font face="Georgia, serif">All Seasons</font></td>
+<td align="center"><font face="Georgia, serif">Cashmere &amp; Linen</font></td>
+<td align="center"><font face="Georgia, serif">Premium</font></td>
+</tr>
+<tr>
+<td align="center"><font face="Georgia, serif">Accessories</font></td>
+<td align="center"><font face="Georgia, serif">All Seasons</font></td>
+<td align="center"><font face="Georgia, serif">Leather &amp; Silk</font></td>
+<td align="center"><font face="Georgia, serif">Elegant</font></td>
+</tr>
+</table>
+</p>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Fashion Dictionary</b></font>
+<p>
+<div class="dict-grid">
+<div class="dict-item">
+<p class="dict-term">Vintage</p>
+<p class="dict-def">Fashion inspired by timeless styles from previous generations.</p>
+</div>
+<div class="dict-item">
+<p class="dict-term">Tailoring</p>
+<p class="dict-def">The process of designing garments for a refined and perfect fit.</p>
+</div>
+<div class="dict-item">
+<p class="dict-term">Cashmere</p>
+<p class="dict-def">A soft luxury fabric valued for warmth and comfort.</p>
+</div>
+</div>
+</p>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td>
+<center>
+<font face="Georgia, serif" size="6" color="#ffffff"><b>How to Build a Timeless Wardrobe</b></font>
+</center>
+<p>
+<font face="Georgia, serif" size="3" color="#ffffff">
+<ol>
+<li>Choose Neutral Colours
+<ol>
+<li>Beige</li>
+<li>Brown</li>
+<li>Black</li>
+</ol>
+</li>
+<li>Invest in Quality Fabrics
+<ol>
+<li>Cashmere</li>
+<li>Wool</li>
+<li>Linen</li>
+</ol>
+</li>
+<li>Keep Accessories Simple</li>
+</ol>
+</font>
+</p>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td>
+<center>
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Wardrobe Essentials</b></font>
+</center>
+<p>
+<font face="Georgia, serif" size="3" color="#ffffff">
+<ul>
+<li>Royal Collections
+<ul>
+<li>Classic Coats</li>
+<li>Long Jackets</li>
+</ul>
+</li>
+<li>Accessories
+<ul>
+<li>Scarves</li>
+<li>Leather Handbags</li>
+<li>Minimal Jewellery</li>
+</ul>
+</li>
+</ul>
+</font>
+</p>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<a name="planner"></a>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Wardrobe Planner</b></font>
+<p>
+<font face="Georgia, serif" size="3" color="#ffffff">Add the pieces you plan to buy or style, tick them off, and filter your list.</font>
+</p>
+<form id="taskForm" class="planner-form">
+<input id="taskInput" placeholder="e.g. Buy a wool coat">
+<button type="submit" class="planner-add">Add</button>
+</form>
+<div class="filter-bar">
+<button type="button" class="filter-btn active" data-filter="all">All</button>
+<button type="button" class="filter-btn" data-filter="open">Open</button>
+<button type="button" class="filter-btn" data-filter="done">Done</button>
+</div>
+<ul id="taskList"></ul>
+<p id="counter"></p>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<a name="subscription"></a>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Subscribe to Royal Classics</b></font>
+<p>
+<font face="Georgia, serif" size="3" color="#ffffff">
+Join our fashion community and stay updated with the latest collections, trends and classic fashion inspiration.
+</font>
+</p>
+<p>
+<form id="subscribeForm" action="subscription.html" method="get" novalidate>
+<input type="email" id="subscribeEmail" name="subscribeEmail" placeholder="you@example.com">
+<br>
+<span id="subscribeEmailError" class="msg"></span>
+</form>
+</p>
+<div class="cta-divider">OR</div>
+<a class="cta-link" href="subscription.html">Open Full Subscription Form &rarr;</a>
+</td>
+</tr>
+</table>
+</center>
+<hr color="#a9823f" size="2" width="90%">
+<center>
+<a name="contact"></a>
+<table width="90%" bgcolor="#3b2412" cellpadding="18" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="6" color="#ffffff"><b>Contact Us</b></font>
+<p>
+<div class="contact-grid">
+<div class="contact-item">
+<a href="mailto:hello@royalclassics.com">hello@royalclassics.com</a>
+</div>
+<div class="contact-item">
+<a href="tel:+911234567890">+91 12345 67890</a>
+</div>
+</div>
+</p>
+<p>
+<a class="cta-link" href="#top">Back to Top</a>
+</p>
+</td>
+</tr>
+</table>
+</center>
+<br>
+<table width="100%" bgcolor="#3b2412" cellpadding="25" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<font face="Georgia, serif" size="5" color="#f6efe0"><b>Royal Classics</b></font>
+<br>
+<font face="Georgia, serif" size="2" color="#e6d5c8">Inspired by timeless fashion and elegant craftsmanship.</font>
+<br>
+<font face="Georgia, serif" size="2" color="#e6d5c8">&copy; 2026 Royal Classics. All Rights Reserved.</font>
+</td>
+</tr>
+</table>
+<script src="validate.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
